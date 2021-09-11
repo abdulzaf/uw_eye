@@ -9,6 +9,11 @@ var struct_data = {}
 
 //#region Load Data
 btnLoadData.onchange = function() {
+    // INITIALIZE DATA STRUCTURE
+    struct_data.SAMPLE = []
+    addMenuOption(0, "SAMPLE", selVarX)
+    addMenuOption(0, "SAMPLE", selVarY)
+
     let file = btnLoadData.files[0];
     let reader = new FileReader();
     reader.addEventListener('load', function(e) {
@@ -20,22 +25,18 @@ btnLoadData.onchange = function() {
         for (i=0; i<dataHead.length; i++) {
             struct_data[dataHead[i]] = [];
             // Add to dropdown
-            var optX = document.createElement('option');
-            optX.value = i;
-            optX.innerHTML = dataHead[i];
-            selVarX.appendChild(optX);
-            selVarX.selectedIndex = 3;
-            var optY = document.createElement('option');
-            optY.value = i;
-            optY.innerHTML = dataHead[i];
-            selVarY.appendChild(optY);
-            selVarY.selectedIndex = 4;
+            addMenuOption(i+1, dataHead[i], selVarX)
+            addMenuOption(i+1, dataHead[i], selVarY)
         }
         // Add Data to Each Key
         for (i=1; i<lines.length; i++) {
             var lineData = lines[i].split('\t')
-            for (j=0; j<dataHead.length; j++) {
-                struct_data[dataHead[j]].push(lineData[j])
+            for (j=-1; j<dataHead.length; j++) {
+                if (j==-1) {
+                    struct_data["SAMPLE"].push(i)
+                } else {
+                    struct_data[dataHead[j]].push(lineData[j])
+                }
             }
         }
         if (dataHead.includes("TIMESTAMP")) {
@@ -44,7 +45,10 @@ btnLoadData.onchange = function() {
             } );
         }
         console.log(struct_data)
-        plotData(dataHead[3], dataHead[4])
+        // SET UI
+        plotData(dataHead[0], dataHead[0])
+        selVarX.selectedIndex = 0;
+        selVarY.selectedIndex = 0;
     });
     reader.readAsText(file);
 };
@@ -87,5 +91,14 @@ function plotData(idX, idY) {
     var config = {responsive: true}
     Plotly.newPlot(
         pltData, data, layout, config);
+}
+//#endregion
+
+//#region UI Features
+function addMenuOption(value, label, menuID) {
+    var opt = document.createElement('option');
+    opt.value = value;
+    opt.innerHTML = label;
+    menuID.appendChild(opt);
 }
 //#endregion
