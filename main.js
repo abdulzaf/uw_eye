@@ -38,9 +38,11 @@ btnLoadData.onchange = function() {
                 struct_data[dataHead[j]].push(lineData[j])
             }
         }
-        struct_data.TIMESTAMP = struct_data.TIMESTAMP.map( function(value) { 
-            return value - struct_data.TIMESTAMP[0]; 
-        } );
+        if (dataHead.includes("TIMESTAMP")) {
+            struct_data.TIMESTAMP = struct_data.TIMESTAMP.map( function(value) { 
+                return value - struct_data.TIMESTAMP[0]; 
+            } );
+        }
         console.log(struct_data)
         plotData(dataHead[3], dataHead[4])
     });
