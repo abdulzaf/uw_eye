@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+  <script lang="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-2.4.2.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <title>Eye Movement Analysis</title>
+</head>
+<body>
+  <div class='panel' id="pnl-head">
+    <label class="load-file" id="lbl-upload">
+      <input type="file" class="head-input" id="btn-upload">
+      Load Data
+    </label>
+    <div id="sel-x" class="selector">
+      <p class="txt-label">X-Value</p>
+      <select id="sel-var-x" class="dropdown"></select>
+    </div>
+    <div id="sel-y" class="selector">
+      <p class="txt-label">Y-Value</p>
+      <select id="sel-var-y" class="dropdown"></select>
+    </div>
+  </div>
+  <div id="plt-panel" class="plot"></div>
+</body>
+<script src="main.js"></script>
+</html>

@@ -1,0 +1,112 @@
+:root {
+  --grey0:#2e353d;
+  --grey1:#353c45;
+  --grey2:#444b53;
+  --grey3:#686c73;
+  --grey4:#8c939c;
+  --grey5:#c2c8cf;
+  --grey6:#eeeeee;
+  --grey7:#ffffff;
+  --yellow1: #ddbd04;
+  --yellow2: #f39212;
+  --orange: #d86e0b;
+  --red0: #da626c;
+  --red1: #f04150;
+  --red2: #a71919;
+  --blue1: #57d3dc;
+  --blue2: #2767b0;
+  --blue3: #18A0FB;
+  --green1: #32e67d;
+  --green2: #157c74;
+  --purple1: #9c27b0;
+  --purple2: #5727b0;
+  --slate1: #95a6bf;
+  --slate2: #6e829a;
+}
+
+.panel {
+  margin: auto;
+  background-color: var(--grey5);
+  border-style: solid;
+  border-radius: 1vh;
+  border-color: var(--grey7);
+  transition: 0.4s linear all;
+}
+.head-input {
+  display: none;
+}
+
+.load-file {
+  background-color: slategray;
+  margin:auto;
+  font-size: 1.5vh;
+  font-weight: bolder;
+  font-family: Helvetica;
+  color: var(--grey7);
+  padding: 2vh;
+  border-radius: 1vh;
+  transition: 0.4s linear all;
+}
+.load-file:hover {
+  background-color: steelblue;
+  color: var(--grey6);
+}
+.load-file:active {
+  background-color: var(--blue1);
+  color: var(--grey7);
+}
+.plot{
+  margin: auto;
+  height: 80vh;
+  width: 90vw;
+  border-style: solid;
+  border-width: 0.25vh;
+  border-color: var(--slate2);
+  border-radius: 1vh;
+}
+
+.selector {
+  justify-content: center;
+  font-size: 1.5vh;
+  font-weight: bolder;
+  font-family: Helvetica;
+  color: var(--grey7)
+}
+
+.txt-label {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-content: center;
+  height: 50%;
+  color: var(--grey0)
+}
+
+.dropdown {
+  display: flex;
+  margin: auto;
+  justify-content: center;
+  align-content: center;
+  color: var(--grey0);
+  font-size: 1.5vh;
+}
+
+
+#pnl-head {
+  width: fit-content;
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "btn-upload sel-x sel-y";
+  transition: 0.4s linear all;
+}
+#lbl-upload {
+  grid-area: btn-upload;
+}
+#sel-x {
+  grid-area: sel-x;
+}
+#sely {
+  grid-area: sel-y;
+}
